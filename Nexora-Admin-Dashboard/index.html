@@ -1,0 +1,391 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nexora | Admin Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">N</div>
+            <h2>NEXORA<span>.</span></h2>
+        </div>
+
+        <p class="menu-label">MAIN MENU</p>
+
+        <nav class="navigation">
+
+            <a href="#overview" class="nav-link active">
+                <i class="fa-solid fa-house"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="#analytics" class="nav-link">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Analytics</span>
+            </a>
+
+            <a href="#users" class="nav-link">
+                <i class="fa-solid fa-users"></i>
+                <span>Users</span>
+            </a>
+
+            <a href="#orders" class="nav-link">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span>Orders</span>
+            </a>
+
+            <a href="#activity" class="nav-link">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <span>Activity</span>
+            </a>
+
+        </nav>
+
+        <p class="menu-label">PREFERENCES</p>
+
+        <nav class="navigation">
+            <a href="#settings" class="nav-link">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="help-card">
+                <i class="fa-solid fa-circle-question"></i>
+                <h4>Need Help?</h4>
+                <p>We're here to support you.</p>
+                <button id="helpBtn">Get Support</button>
+            </div>
+
+            <div class="admin-profile">
+                <div class="avatar">GG</div>
+                <div>
+                    <h4>Gayathri G</h4>
+                    <p>Administrator</p>
+                </div>
+                <i class="fa-solid fa-ellipsis"></i>
+            </div>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content" id="overview">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="welcome">
+                <h2>Dashboard Overview</h2>
+                <p>Welcome back! Here's what's happening today.</p>
+            </div>
+
+            <div class="top-actions">
+
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="globalSearch"
+                    placeholder="Search users...">
+                </div>
+
+                <button class="notification" id="notificationBtn">
+                    <i class="fa-regular fa-bell"></i>
+                    <span></span>
+                </button>
+
+                <div class="top-avatar">GG</div>
+
+            </div>
+
+        </header>
+
+
+        <!-- STATISTICS -->
+        <section class="stats-grid">
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <div class="stat-icon purple">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <span class="growth">+12.8%</span>
+                </div>
+                <p>Total Users</p>
+                <h2>12,840</h2>
+                <small>Compared to last month</small>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <div class="stat-icon blue">
+                        <i class="fa-solid fa-wallet"></i>
+                    </div>
+                    <span class="growth">+8.4%</span>
+                </div>
+                <p>Total Revenue</p>
+                <h2>₹8,45,200</h2>
+                <small>Compared to last month</small>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <div class="stat-icon orange">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                    </div>
+                    <span class="growth">+15.2%</span>
+                </div>
+                <p>Total Orders</p>
+                <h2>3,240</h2>
+                <small>Compared to last month</small>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-top">
+                    <div class="stat-icon green">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <span class="growth">+5.6%</span>
+                </div>
+                <p>Active Sessions</p>
+                <h2>1,284</h2>
+                <small>Currently active users</small>
+            </div>
+
+        </section>
+
+
+        <!-- ANALYTICS -->
+        <section class="analytics-grid" id="analytics">
+            <div class="panel revenue-panel">
+
+                <div class="panel-heading">
+                    <div>
+                        <p class="section-label">PERFORMANCE</p>
+                        <h3>Revenue Analytics</h3>
+                    </div>
+                    <select id="periodSelect">
+                        <option value="monthly">Monthly</option>
+                        <option value="weekly">Weekly</option>
+                    </select>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="revenueChart"></canvas>
+                </div>
+
+            </div>
+
+
+            <div class="panel distribution-panel">
+
+                <div class="panel-heading">
+                    <div>
+                        <p class="section-label">OVERVIEW</p>
+                        <h3>Sales Distribution</h3>
+                    </div>
+                </div>
+
+                <div class="chart-container doughnut-container">
+                    <canvas id="salesChart"></canvas>
+                </div>
+
+                <div class="legend">
+                    <span><i class="dot purple-dot"></i> Products</span>
+                    <span><i class="dot blue-dot"></i> Services</span>
+                    <span><i class="dot orange-dot"></i> Others</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- USERS TABLE -->
+        <section class="panel users-panel" id="users">
+
+            <div class="panel-heading">
+                <div>
+                    <p class="section-label">MANAGEMENT</p>
+                    <h3>User Management</h3>
+                </div>
+                <button class="add-btn" id="addUserBtn">
+                    <i class="fa-solid fa-plus"></i> Add User
+                </button>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>USER</th>
+                            <th>ROLE</th>
+                            <th>JOINED DATE</th>
+                            <th>STATUS</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="userTable">
+
+                        <tr>
+                            <td>
+                                <div class="user-cell">
+                                    <div class="user-avatar avatar-one">AK</div>
+                                    <div>
+                                        <strong>Arun Kumar</strong>
+                                        <small>arun@gmail.com</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Developer</td>
+                            <td>10 Nov 2026</td>
+                            <td><span class="status active-status">Active</span></td>
+                            <td><button class="delete-btn">Delete</button></td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div class="user-cell">
+                                    <div class="user-avatar avatar-two">PS</div>
+                                    <div>
+                                        <strong>Priya Sharma</strong>
+                                        <small>priya@gmail.com</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Designer</td>
+                            <td>08 Nov 2026</td>
+                            <td><span class="status active-status">Active</span></td>
+                            <td><button class="delete-btn">Delete</button></td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div class="user-cell">
+                                    <div class="user-avatar avatar-three">RV</div>
+                                    <div>
+                                        <strong>Rahul Verma</strong>
+                                        <small>rahul@gmail.com</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Manager</td>
+                            <td>05 Nov 2026</td>
+                            <td><span class="status pending-status">Pending</span></td>
+                            <td><button class="delete-btn">Delete</button></td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div class="user-cell">
+                                    <div class="user-avatar avatar-four">DM</div>
+                                    <div>
+                                        <strong>Divya Menon</strong>
+                                        <small>divya@gmail.com</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Analyst</td>
+                            <td>02 Nov 2026</td>
+                            <td><span class="status active-status">Active</span></td>
+                            <td><button class="delete-btn">Delete</button></td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- RECENT ACTIVITY -->
+        <section class="panel activity-panel" id="activity">
+
+            <div class="panel-heading">
+                <div>
+                    <p class="section-label">LATEST UPDATES</p>
+                    <h3>Recent Activity</h3>
+                </div>
+            </div>
+
+            <div class="activity-item">
+                <div class="activity-icon purple">
+                    <i class="fa-solid fa-user-plus"></i>
+                </div>
+                <div>
+                    <h4>New user registered</h4>
+                    <p>Arun Kumar joined the platform.</p>
+                </div>
+                <small>10 min ago</small>
+            </div>
+
+            <div class="activity-item">
+                <div class="activity-icon green">
+                    <i class="fa-solid fa-credit-card"></i>
+                </div>
+                <div>
+                    <h4>Payment received</h4>
+                    <p>New payment of ₹12,500 received.</p>
+                </div>
+                <small>30 min ago</small>
+            </div>
+
+            <div class="activity-item">
+                <div class="activity-icon orange">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+                <div>
+                    <h4>New order placed</h4>
+                    <p>Order #NX2048 was successfully placed.</p>
+                </div>
+                <small>1 hour ago</small>
+            </div>
+
+        </section>
+
+
+        <footer>
+            <p>© 2026 NEXORA. Built with creativity and innovation.</p>
+        </footer>
+
+    </main>
+
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
